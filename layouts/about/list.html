@@ -1,0 +1,95 @@
+{{ define "page_styles" }}
+<link rel="stylesheet" href="/css/about.css">
+{{ end }}
+
+{{ define "main" }}
+{{ $profile := site.Data.about.profile.profile }}
+<main class="main-content about-page">
+  <div class="page-header">
+    <h1 class="page-title">{{ .Title }}</h1>
+    <p class="page-subtitle">{{ .Params.subtitle }}</p>
+  </div>
+  <section class="about-section">
+    <div class="container">
+      <div class="profile-section">
+        <div class="profile-image">
+          <img src="/images/about.png" alt="Profile" class="profile-img">
+          <div class="profile-decoration">
+            <span class="deco-element star">★</span>
+            <span class="deco-element heart">💖</span>
+            <span class="deco-element sparkle">✨</span>
+          </div>
+        </div>
+        <div class="profile-info">
+          <h2 class="profile-name">{{ $profile.title }}</h2>
+          <p class="profile-title">{{ $profile.role }}</p>
+          <div class="profile-description">
+            {{ range $profile.description }}
+              <p>{{ . }}</p>
+            {{ end }}
+          </div>
+          <div class="profile-stats">
+            {{ range $profile.stats }}
+            <div class="stat-item">
+              <div class="stat-number">{{ .value }}</div>
+              <div class="stat-label">{{ .label }}</div>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+
+      <div class="skills-section">
+        <h2 class="section-title">得意分野・スキル</h2>
+        <div class="skills-grid">
+          {{ range $profile.specialties }}
+          <div class="skill-item">
+            <div class="skill-icon">{{ .emoji }}</div>
+            <div class="skill-content">
+              <h3 class="skill-title">{{ .title }}</h3>
+              <p class="skill-description">{{ .description }}</p>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+
+      <div class="tools-section">
+        <h2 class="section-title">使用ツール・ソフトウェア</h2>
+        <div class="tools-grid">
+          {{ range $profile.tools }}
+          <div class="tool-item">
+            <div class="tool-name">{{ .name }}</div>
+            <div class="tool-usage">{{ .description }}</div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+
+      <div class="experience-section">
+        <h2 class="section-title">活動実績・経歴</h2>
+        <div class="timeline">
+          {{ range $profile.achievements }}
+          <div class="timeline-item">
+            <div class="timeline-date">{{ .date }}</div>
+            <div class="timeline-content">
+              <h3>{{ .title }}</h3>
+              <p>{{ .description }}</p>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+
+      <div class="about-cta">
+        <h2 class="cta-title">お仕事のご依頼・ご相談</h2>
+        <p class="cta-description">どんな小さなことでもお気軽にお声かけください。一緒に素敵な作品を作りましょう！</p>
+        <div class="cta-buttons">
+          <a href="/contact/" class="btn btn-primary">お問い合わせ</a>
+          <a href="/works/" class="btn btn-secondary">作品を見る</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{{ end }}

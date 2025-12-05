@@ -1,0 +1,13 @@
+categories:
+  - slug: "vtuber"
+    title: "VTuber"
+    description: "Live2Dモデル・配信向け素材"
+  - slug: "illustration"
+    title: "キャラクターイラスト"
+    description: "等身/半身のカラーイラスト"
+  - slug: "chibi"
+    title: "デフォルメ"
+    description: "アイコン・スタンプ用のSD表現"
+  - slug: "motion"
+    title: "動画・モーション"
+    description: "モーショングラフィックスや動画演出"

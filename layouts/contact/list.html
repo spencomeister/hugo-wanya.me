@@ -1,0 +1,158 @@
+{{ define "page_styles" }}
+<link rel="stylesheet" href="/css/contact.css">
+{{ end }}
+
+{{ define "main" }}
+<main class="main-content contact-page">
+  <div class="page-header">
+    <h1 class="page-title">{{ .Title }}</h1>
+    <p class="page-subtitle">{{ .Params.subtitle }}</p>
+  </div>
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-methods">
+        <h2 class="section-title">お問い合わせ方法</h2>
+        <div class="methods-grid">
+          <div class="method-item primary">
+            <div class="method-icon">📧</div>
+            <div class="method-content">
+              <h3 class="method-title">メールフォーム</h3>
+              <p class="method-description">Cloudflare Workers と Resend を経由して、暗号化されたリクエストで安全に送信されます。{{ site.Params.contactSubtext }}</p>
+              <div class="method-status online">ONLINE</div>
+            </div>
+          </div>
+          <div class="method-item">
+            <div class="method-icon">🐦</div>
+            <div class="method-content">
+              <h3 class="method-title">X (Twitter) DM</h3>
+              <p class="method-description">Xのダイレクトメッセージでもお問い合わせを受け付けています。</p>
+              <a href="https://x.com/sakana_suki__" class="method-link" target="_blank" rel="noopener">@sakana_suki__</a>
+            </div>
+          </div>
+          <div class="method-item">
+            <div class="method-icon">🛍️</div>
+            <div class="method-content">
+              <h3 class="method-title">BOOTH</h3>
+              <p class="method-description">BOOTHでの販売やメッセージ機能もご利用いただけます。</p>
+              <a href="https://sakanasuki.booth.pm/" class="method-link" target="_blank" rel="noopener">BOOTH Shop</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-section">
+        <h2 class="section-title">お問い合わせフォーム</h2>
+        <form class="contact-form" id="contactForm" data-endpoint="/api/contact">
+          <div class="form-message info" data-form-message aria-live="polite">
+            Cloudflare Pages + Workers + Resend を経由して送信内容をお届けします。2営業日以内の返信を目安にご連絡いたします。
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contact_name" class="form-label">お名前 <span class="required">*</span></label>
+              <input type="text" id="contact_name" name="contact_name" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label for="contact_email" class="form-label">メールアドレス <span class="required">*</span></label>
+              <input type="email" id="contact_email" name="contact_email" class="form-input" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contact_phone" class="form-label">電話番号</label>
+              <input type="tel" id="contact_phone" name="contact_phone" class="form-input">
+            </div>
+            <div class="form-group">
+              <label for="contact_subject" class="form-label">件名 <span class="required">*</span></label>
+              <select id="contact_subject" name="contact_subject" class="form-select" required>
+                <option value="">選択してください</option>
+                <option value="commission">制作依頼について</option>
+                <option value="live2d">Live2Dモデルについて</option>
+                <option value="price">料金について</option>
+                <option value="collaboration">コラボレーションについて</option>
+                <option value="other">その他</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contact_budget" class="form-label">ご予算</label>
+            <select id="contact_budget" name="contact_budget" class="form-select">
+              <option value="">選択してください</option>
+              <option value="under_10000">1万円未満</option>
+              <option value="10000_30000">1万円〜3万円</option>
+              <option value="30000_50000">3万円〜5万円</option>
+              <option value="50000_100000">5万円〜10万円</option>
+              <option value="over_100000">10万円以上</option>
+              <option value="negotiable">要相談</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="contact_deadline" class="form-label">希望納期</label>
+            <input type="text" id="contact_deadline" name="contact_deadline" class="form-input" placeholder="例: 2週間後、来月末まで">
+          </div>
+          <div class="form-group">
+            <label for="contact_message" class="form-label">メッセージ <span class="required">*</span></label>
+            <textarea id="contact_message" name="contact_message" class="form-textarea" rows="6" required></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-checkbox-label">
+              <input type="checkbox" name="contact_agreement" required>
+              <span class="checkmark"></span>
+              <a href="/guidelines/" target="_blank">利用規約・ガイドライン</a>に同意します <span class="required">*</span>
+            </label>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary submit-btn">
+              <span class="btn-text">送信する</span>
+              <span class="btn-loading" style="display: none;">送信中...</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="faq-section">
+        <h2 class="section-title">よくあるご質問</h2>
+        <div class="faq-list">
+          {{ range (slice
+            (dict "question" "制作期間はどのくらいかかりますか？" "answer" "内容により異なりますが、キャラクターイラスト1枚で1-2週間、Live2Dモデルで3-4週間程度が目安です。")
+            (dict "question" "修正は何回まで可能ですか？" "answer" "ラフ段階で3回、色塗り後は2回まで無料です。それ以降は追加料金となります。")
+            (dict "question" "支払い方法を教えてください" "answer" "銀行振込、PayPal、各種クレジットカード決済に対応しています。")
+            (dict "question" "商用利用は可能ですか？" "answer" "はい、商用利用も承っております。利用範囲により料金が変わるためご相談ください。")
+          ) }}
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>{{ .question }}</h3>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>{{ .answer }}</p>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+
+      <div class="contact-info">
+        <h2 class="section-title">お問い合わせ先</h2>
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="contact-label">営業時間</div>
+            <div class="contact-value">平日 10:00 - 18:00（土日祝除く）</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-label">返信時間</div>
+            <div class="contact-value">通常24時間以内（営業日）</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-label">対応言語</div>
+            <div class="contact-value">日本語、English（基本的な対応）</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{{ end }}
+
+{{ define "page_scripts" }}
+<script src="/js/contact.js" defer></script>
+{{ end }}

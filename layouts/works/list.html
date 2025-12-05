@@ -1,0 +1,104 @@
+{{ define "page_styles" }}
+<link rel="stylesheet" href="/css/works.css">
+{{ end }}
+
+{{ define "main" }}
+<div class="loading" id="loading">
+  <div class="loading-content">
+    <div class="loading-text">
+      <span class="jump-letter">W</span>
+      <span class="jump-letter">O</span>
+      <span class="jump-letter">R</span>
+      <span class="jump-letter">K</span>
+      <span class="jump-space"></span>
+      <span class="jump-letter">G</span>
+      <span class="jump-letter">A</span>
+      <span class="jump-letter">L</span>
+      <span class="jump-letter">L</span>
+      <span class="jump-letter">E</span>
+      <span class="jump-letter">R</span>
+      <span class="jump-letter">Y</span>
+    </div>
+    <div class="loading-subtitle">動画コンテンツを読み込み中...</div>
+    <div class="loading-role">WANYA ILLUSTRATION WORKS</div>
+  </div>
+</div>
+
+<main class="main-content">
+  <div class="page-header">
+    <h1 class="page-title">{{ .Title }}</h1>
+    <p class="page-subtitle">{{ .Params.subtitle }}</p>
+  </div>
+  <section class="works-gallery">
+    <div class="container">
+      {{ $allWorks := where .Site.RegularPages "Type" "works" }}
+      {{ $categories := site.Data.works.categories.categories }}
+      {{ $hasContent := false }}
+      {{ range $categories }}
+        {{ $filtered := where $allWorks "Params.categories" "intersect" (slice .slug) }}
+        {{ if gt (len $filtered) 0 }}
+          {{ $hasContent = true }}
+          {{ $sorted := sort $filtered "Params.order" }}
+          <div class="work-section" id="{{ .slug }}">
+            <h3 class="work-title">{{ .title }}</h3>
+            <div class="work-item">
+              <div class="carousel-container">
+                <div class="carousel" data-work="{{ .slug }}">
+                  <div class="carousel-track">
+                    {{ range $index, $work := $sorted }}
+                      {{ $media := index (or $work.Params.media (slice (dict "type" "image" "src" "/images/wanya.png" "alt" $work.Title))) 0 }}
+                      <div class="carousel-slide {{ if eq $index 0 }}active{{ end }}">
+                        {{ if eq $media.type "video" }}
+                          <video {{ if eq $index 0 }}autoplay{{ end }} muted loop playsinline preload="metadata">
+                            <source src="{{ $media.src }}" type="video/mp4">
+                          </video>
+                        {{ else }}
+                          <img src="{{ $media.src }}" alt="{{ $media.alt }}">
+                        {{ end }}
+                      </div>
+                    {{ end }}
+                  </div>
+                  {{ if gt (len $sorted) 1 }}
+                    <button class="carousel-btn prev" data-direction="prev">‹</button>
+                    <button class="carousel-btn next" data-direction="next">›</button>
+                    <div class="carousel-indicators">
+                      {{ range $i, $_ := seq 0 (sub (len $sorted) 1) }}
+                        <span class="indicator {{ if eq $i 0 }}active{{ end }}" data-slide="{{ $i }}"></span>
+                      {{ end }}
+                    </div>
+                  {{ end }}
+                </div>
+                <div class="work-info">
+                  <div class="work-details">
+                    {{ range $index, $work := $sorted }}
+                      <div class="slide-info" data-slide="{{ $index }}" {{ if eq $index 0 }}style="display: block;"{{ else }}style="display: none;"{{ end }}>
+                        <h4 class="client-name">{{ with $work.Params.client }}{{ . }}{{ else }}{{ $work.Title }}{{ end }}</h4>
+                        {{ with $work.Params.comment }}<p class="work-comment">{{ . }}</p>{{ end }}
+                        {{ with $work.Params.tags }}
+                        <div class="work-tags">
+                          {{ range . }}<span class="tag">{{ . }}</span>{{ end }}
+                        </div>
+                        {{ end }}
+                      </div>
+                    {{ end }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {{ end }}
+      {{ end }}
+      {{ if not $hasContent }}
+        <div class="no-works-message">
+          <h3>作品がまだ登録されていません</h3>
+          <p>`content/works/` に Markdown を追加してください。</p>
+        </div>
+      {{ end }}
+    </div>
+  </section>
+</main>
+{{ end }}
+
+{{ define "page_scripts" }}
+<script src="/js/works.js" defer></script>
+{{ end }}

@@ -1,0 +1,19 @@
+# Hugo build artifacts
+/public/
+/resources/
+/hugo_cache/
+
+# Hugo stats + temp files
+hugo_stats.json
+.hugo_build.lock
+
+# Logs
+*.log
+
+# Local environment overrides
+.env
+.env.*
+
+# OS junk
+.DS_Store
+Thumbs.db

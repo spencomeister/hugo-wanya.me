@@ -1,0 +1,49 @@
+baseURL = "/"
+languageCode = "ja"
+title = "WANYA Portfolio"
+defaultContentLanguage = "ja"
+
+timezone = "Asia/Tokyo"
+
+disableKinds = ["RSS", "taxonomy", "term"]
+
+[outputs]
+  home = ["HTML"]
+
+[params]
+  brandName = "WANYA"
+  tagline = "Artist Portfolio"
+  contactCTA = "お問い合わせ"
+  contactSubtext = "日本語 / English (basic)"
+  formPlaceholder = "フォームは現在準備中です"
+  contactEnabled = false
+
+[[menu.main]]
+  name = "TOP"
+  url = "/"
+  weight = 10
+
+[[menu.main]]
+  name = "ABOUT"
+  url = "/about/"
+  weight = 20
+
+[[menu.main]]
+  name = "WORKS"
+  url = "/works/"
+  weight = 30
+
+[[menu.main]]
+  name = "PRICE"
+  url = "/price/"
+  weight = 40
+
+[[menu.main]]
+  name = "GUIDELINES"
+  url = "/guidelines/"
+  weight = 50
+
+[[menu.main]]
+  name = "CONTACT"
+  url = "/contact/"
+  weight = 60

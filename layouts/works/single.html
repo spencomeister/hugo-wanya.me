@@ -1,0 +1,51 @@
+{{ define "page_styles" }}
+<link rel="stylesheet" href="/css/works.css">
+{{ end }}
+
+{{ define "main" }}
+<main class="main-content">
+  <div class="page-header">
+    <h1 class="page-title">{{ .Title }}</h1>
+    <p class="page-subtitle">{{ with .Params.client }}{{ . }}{{ end }}</p>
+  </div>
+  <section class="works-gallery">
+    <div class="container">
+      <article class="work-item">
+        <div class="carousel-container">
+          <div class="carousel">
+            <div class="carousel-track">
+              {{ range $index, $media := .Params.media }}
+              <div class="carousel-slide {{ if eq $index 0 }}active{{ end }}">
+                {{ if eq $media.type "video" }}
+                  <video {{ if eq $index 0 }}autoplay{{ end }} muted loop playsinline preload="metadata">
+                    <source src="{{ $media.src }}" type="video/mp4">
+                  </video>
+                {{ else }}
+                  <img src="{{ $media.src }}" alt="{{ $media.alt }}">
+                {{ end }}
+              </div>
+              {{ end }}
+            </div>
+          </div>
+          <div class="work-info">
+            <div class="work-details">
+              <div class="slide-info" style="display: block;">
+                <h4 class="client-name">{{ with .Params.client }}{{ . }}{{ else }}{{ .Title }}{{ end }}</h4>
+                {{ with .Params.comment }}<p class="work-comment">{{ . }}</p>{{ end }}
+                {{ with .Params.tags }}
+                <div class="work-tags">
+                  {{ range . }}<span class="tag">{{ . }}</span>{{ end }}
+                </div>
+                {{ end }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="work-body">
+          {{ .Content }}
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+{{ end }}

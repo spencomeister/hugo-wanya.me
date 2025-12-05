@@ -1,0 +1,778 @@
+/* Guidelines Page Specific Styles */
+
+.guidelines .main-content {
+    padding-top: 80px;
+    min-height: 100vh;
+}
+
+.page-header {
+    text-align: center;
+    padding: 80px 0 60px;
+    background: linear-gradient(135deg, #fff2a8 0%, #ffe0b3 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="diamonds" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><polygon points="10,2 18,10 10,18 2,10" fill="rgba(255,255,255,0.2)"/></pattern></defs><rect width="100" height="100" fill="url(%23diamonds)"/></svg>');
+    opacity: 0.3;
+}
+
+.page-title {
+    font-family: 'RocknRoll One', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 1;
+}
+
+.page-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.9);
+    margin: 10px 0 0;
+    position: relative;
+    z-index: 1;
+}
+
+.guidelines-section {
+    padding: 80px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* Table of Contents */
+.toc-section {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: 2px solid #f0f0f0;
+    width: 100%;
+}
+
+.toc-title {
+    font-family: 'RocknRoll One', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 30px;
+    text-align: center;
+}
+
+.toc-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.toc-list li {
+    background: linear-gradient(135deg, #a8e6cf, #a8d8ea);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.toc-list li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.toc-list a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+/* Guideline Sections */
+.guideline-section {
+    padding: 50px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+.section-title {
+    font-family: 'RocknRoll One', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 40px;
+    text-align: center;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(135deg, #fff2a8, #ffe0b3);
+    border-radius: 2px;
+}
+
+/* Commission Flow */
+.flow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 30px;
+    background: linear-gradient(135deg, #f8f9fa, #ffffff);
+    border-radius: 15px;
+    border-left: 5px solid #a8e6cf;
+    transition: all 0.3s ease;
+}
+
+.step-item:hover {
+    transform: translateX(10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.step-number {
+    background: linear-gradient(135deg, #a8e6cf, #a8d8ea);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'RocknRoll One', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.step-content {
+    flex: 1;
+}
+
+.step-title {
+    font-family: 'RocknRoll One', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 15px;
+}
+
+.step-description {
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Terms Section */
+.terms-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.term-item {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 15px;
+    border-top: 4px solid #a8e6cf;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+}
+
+.term-title {
+    font-family: 'RocknRoll One', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 20px;
+}
+
+.term-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.term-list li {
+    padding: 8px 0;
+    color: #666;
+    position: relative;
+    padding-left: 20px;
+}
+
+.term-list li::before {
+    content: '•';
+    color: #a8e6cf;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* Payment Section */
+.payment-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 50px;
+}
+
+.payment-title {
+    font-family: 'RocknRoll One', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 25px;
+    text-align: center;
+}
+
+.payment-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.payment-item {
+    display: flex;
+    align-items: center;
+    padding: 20px 25px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    gap: 20px;
+    width: 100%;
+}
+
+.payment-item:hover {
+    transform: translateY(-5px);
+    border-color: #a8e6cf;
+}
+
+.payment-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+    width: 50px;
+    text-align: center;
+}
+
+.payment-content {
+    flex: 1;
+}
+
+.payment-name {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.payment-desc {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 0;
+}
+
+.timing-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+.timing-list li {
+    padding: 10px 0;
+    color: #666;
+    border-bottom: 1px solid #eee;
+}
+
+.timing-list li:last-child {
+    border-bottom: none;
+}
+
+/* Revision Section */
+.revision-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.revision-free, .revision-paid {
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.revision-free {
+    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+    border: 2px solid #b8dabc;
+}
+
+.revision-paid {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    border: 2px solid #f7c6c7;
+}
+
+.revision-title {
+    font-family: 'RocknRoll One', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0 0 20px;
+}
+
+.revision-free .revision-title {
+    color: #155724;
+}
+
+.revision-paid .revision-title {
+    color: #856404;
+}
+
+.revision-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px;
+}
+
+.revision-list li {
+    padding: 8px 0;
+    position: relative;
+    padding-left: 20px;
+}
+
+.revision-free .revision-list li::before {
+    content: '✓';
+    color: #28a745;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.revision-paid .revision-list li::before {
+    content: '¥';
+    color: #ffc107;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.revision-note {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #856404;
+    margin: 0;
+}
+
+/* Delivery Section */
+.delivery-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 50px;
+}
+
+.delivery-times {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.delivery-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+    background: linear-gradient(135deg, #a8e6cf, #a8d8ea);
+    color: white;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.delivery-item:hover {
+    transform: scale(1.05);
+}
+
+.delivery-type {
+    font-weight: 600;
+    font-size: 1.1rem;
+    flex: 1;
+    text-align: left;
+}
+
+.delivery-time {
+    font-family: 'RocknRoll One', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: right;
+    color: rgba(255,255,255,0.95);
+}
+
+.delivery-notes {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.delivery-notes h3 {
+    font-family: 'RocknRoll One', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 20px;
+}
+
+.delivery-notes ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.delivery-notes li {
+    padding: 8px 0;
+    color: #666;
+    position: relative;
+    padding-left: 20px;
+}
+
+.delivery-notes li::before {
+    content: '!';
+    color: #ffc107;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* Usage Rights Section */
+.usage-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.usage-allowed, .usage-restricted {
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.usage-allowed {
+    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+    border: 2px solid #b8dabc;
+}
+
+.usage-restricted {
+    background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+    border: 2px solid #f1b0b7;
+}
+
+.usage-title {
+    font-family: 'RocknRoll One', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0 0 20px;
+}
+
+.usage-allowed .usage-title {
+    color: #155724;
+}
+
+.usage-restricted .usage-title {
+    color: #721c24;
+}
+
+.usage-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.usage-list li {
+    padding: 8px 0;
+    position: relative;
+    padding-left: 20px;
+}
+
+.usage-allowed .usage-list li::before {
+    content: '✓';
+    color: #28a745;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.usage-restricted .usage-list li::before {
+    content: '⚠';
+    color: #dc3545;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* Prohibited Section */
+.prohibited-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.prohibited-item {
+    display: flex;
+    align-items: center;
+    padding: 25px 30px;
+    background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+    border-radius: 15px;
+    border: 2px solid #f1b0b7;
+    transition: all 0.3s ease;
+    gap: 25px;
+    width: 100%;
+}
+
+.prohibited-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.prohibited-icon {
+    font-size: 3rem;
+    flex-shrink: 0;
+    width: 60px;
+    text-align: center;
+}
+
+.prohibited-content {
+    flex: 1;
+}
+
+.prohibited-title {
+    font-family: 'RocknRoll One', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #721c24;
+    margin: 0 0 8px;
+}
+
+.prohibited-desc {
+    font-size: 1rem;
+    color: #856a5b;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Notes Section */
+.notes-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+}
+
+.note-important {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 15px;
+    border-left: 5px solid #ffc107;
+}
+
+.note-contact {
+    background: linear-gradient(135deg, #a8e6cf, #a8d8ea);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.note-title {
+    font-family: 'RocknRoll One', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0 0 20px;
+}
+
+.note-important .note-title {
+    color: #333;
+}
+
+.note-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.note-list li {
+    padding: 8px 0;
+    color: #666;
+    position: relative;
+    padding-left: 20px;
+}
+
+.note-list li::before {
+    content: '⚠';
+    color: #ffc107;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.note-contact p {
+    margin: 0 0 25px;
+    line-height: 1.6;
+}
+
+.contact-button {
+    display: inline-block;
+    padding: 12px 30px;
+    background: white;
+    color: #333;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.contact-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2.5rem;
+    }
+    
+    .guideline-section {
+        padding: 30px 20px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .toc-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .step-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .terms-content,
+    .payment-content,
+    .revision-content,
+    .delivery-content,
+    .usage-content,
+    .notes-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .term-item {
+        height: auto;
+        min-height: 220px;
+    }
+    
+    .payment-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+        gap: 15px;
+    }
+    
+    .payment-icon {
+        width: auto;
+    }
+    
+    .delivery-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .delivery-type {
+        text-align: center;
+    }
+    
+    .delivery-time {
+        text-align: center;
+    }
+    
+    .prohibited-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px 20px;
+        gap: 15px;
+    }
+    
+    .prohibited-icon {
+        width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header {
+        padding: 60px 0 40px;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .guidelines-section {
+        padding: 60px 0;
+    }
+    
+    .container {
+        gap: 40px;
+    }
+    
+    .toc-section {
+        padding: 25px 15px;
+    }
+    
+    .guideline-section {
+        padding: 25px 15px;
+    }
+    
+    .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .prohibited-grid {
+        grid-template-columns: 1fr;
+    }
+}

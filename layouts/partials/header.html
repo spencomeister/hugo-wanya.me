@@ -1,0 +1,35 @@
+<header class="header">
+  <nav class="nav">
+    <div class="logo">
+      <img src="/images/logo.png" alt="{{ site.Params.brandName }}" class="logo-img" />
+    </div>
+    <ul class="nav-list">
+      {{ if .Site.Menus.main }}
+        {{ $current := . }}
+        {{ range .Site.Menus.main }}
+          {{ $isActive := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) }}
+          <li><a href="{{ .URL }}" class="{{ if $isActive }}active{{ end }}">{{ .Name }}</a></li>
+        {{ end }}
+      {{ else }}
+        <li><a href="/">TOP</a></li>
+        <li><a href="/about/">ABOUT</a></li>
+        <li><a href="/works/">WORKS</a></li>
+        <li><a href="/price/">PRICE</a></li>
+        <li><a href="/guidelines/">GUIDELINES</a></li>
+        <li><a href="/contact/">CONTACT</a></li>
+      {{ end }}
+    </ul>
+    <div class="social-links">
+      <a href="https://x.com/sakana_suki__" class="social-icon" target="_blank" rel="noopener" title="X (Twitter)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+        </svg>
+      </a>
+      <a href="https://sakanasuki.booth.pm/" class="social-icon" target="_blank" rel="noopener" title="BOOTH">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 7h-1V6a4 4 0 0 0-4-4H10a4 4 0 0 0-4 4v1H5a1 1 0 0 0-1 1v11a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8a1 1 0 0 0-1-1zM8 6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1H8V6zm10 13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V9h2v1a1 1 0 0 0 2 0V9h4v1a 1 1 0 0 0 2 0V9h2v10z" />
+        </svg>
+      </a>
+    </div>
+  </nav>
+</header>

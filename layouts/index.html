@@ -1,0 +1,111 @@
+{{ define "main" }}
+{{ if .IsHome }}
+<div id="loading" class="loading">
+  <div class="loading-content">
+    <div class="loading-text">
+      <span class="jump-letter">N</span>
+      <span class="jump-letter">O</span>
+      <span class="jump-letter">W</span>
+      <span class="jump-space">&nbsp;</span>
+      <span class="jump-letter">L</span>
+      <span class="jump-letter">O</span>
+      <span class="jump-letter">A</span>
+      <span class="jump-letter">D</span>
+      <span class="jump-letter">I</span>
+      <span class="jump-letter">N</span>
+      <span class="jump-letter">G</span>
+      <span class="jump-letter">.</span>
+      <span class="jump-letter">.</span>
+      <span class="jump-letter">.</span>
+    </div>
+    <div class="loading-subtitle">HELLO... My name is WANYA.</div>
+    <div class="loading-role">ARTIST</div>
+  </div>
+</div>
+{{ end }}
+
+<main class="main-content" id="top">
+  <section id="hero" class="main-visual">
+    <div class="main-image">
+      <img src="/images/wanya.png" alt="WANYA Main Visual" class="fv-img" id="mainImage">
+      <div class="overlay-images">
+        <img src="/images/heart-fukidashi.png" alt="Heart" class="overlay-img overlay-6" id="overlay6">
+        <img src="/images/egg.png" alt="Egg" class="overlay-img overlay-7" id="overlay7">
+        <img src="/images/chibi-wanya.png" alt="Chibi WANYA" class="overlay-img overlay-8" id="overlay8">
+        <img src="/images/wanya-eng.png" alt="WANYA" class="overlay-img overlay-9" id="overlay9">
+      </div>
+      <div class="image-effects">
+        <div class="sparkle sparkle-1">✨</div>
+        <div class="sparkle sparkle-2">⭐</div>
+        <div class="sparkle sparkle-3">✨</div>
+        <div class="sparkle sparkle-4">💫</div>
+        <div class="sparkle sparkle-5">⭐</div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-text">SCROLL</div>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  {{/* Section helper */}}
+    {{ $sections := slice
+      (dict "id" "about" "title" "ABOUT" "description" "イラスト制作、アート作品などをまとめたプロフィール。"
+        "url" "/about/" "cta" "私について" "elements" (slice
+          (dict "class" "star" "icon" "★")
+          (dict "class" "tulip" "icon" "🌷")
+          (dict "class" "circle" "icon" "●")
+          (dict "class" "jagged" "icon" "⚡")
+        ))
+      (dict "id" "works" "title" "WORKS" "description" "過去のイラストやアニメーションを集めたギャラリー。"
+        "url" "/works/" "cta" "実績を見る" "elements" (slice
+          (dict "class" "star" "icon" "★")
+          (dict "class" "wave" "icon" "〜")
+          (dict "class" "circle" "icon" "●")
+          (dict "class" "cloud" "icon" "☁")
+        ))
+      (dict "id" "price" "title" "PRICE" "description" "サービス別の料金表とオプションをご案内します。"
+        "url" "/price/" "cta" "料金表を見る" "elements" (slice
+          (dict "class" "star" "icon" "★")
+          (dict "class" "circle" "icon" "●")
+          (dict "class" "wave" "icon" "〜")
+          (dict "class" "cloud" "icon" "💰")
+        ))
+      (dict "id" "guidelines" "title" "GUIDELINES" "description" "ご依頼前にご確認いただきたいガイドラインを掲載。"
+        "url" "/guidelines/" "cta" "ガイドラインを見る" "elements" (slice
+          (dict "class" "star" "icon" "★")
+          (dict "class" "wave" "icon" "〜")
+          (dict "class" "circle" "icon" "●")
+          (dict "class" "jagged" "icon" "⚡")
+        ))
+  }}
+
+  {{ range $sections }}
+  <section id="{{ .id }}" class="section {{ .id }}-section">
+    <div class="container">
+      <div class="section-content">
+        <h2 class="section-title">{{ .title }}</h2>
+        <p class="section-description">{{ .description }}</p>
+        <a href="{{ .url }}" class="section-btn"><span>{{ .cta }}</span></a>
+      </div>
+      <div class="section-visual">
+        <div class="decorative-elements">
+          {{ range .elements }}
+            <span class="element {{ .class }}">{{ .icon }}</span>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <div class="contact-content">
+        <h2 class="section-title">CONTACT</h2>
+        <a href="/contact/" class="contact-btn"><span>{{ site.Params.contactCTA }}</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+{{ end }}

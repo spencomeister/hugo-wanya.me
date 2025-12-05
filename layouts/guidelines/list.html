@@ -1,0 +1,239 @@
+{{ define "page_styles" }}
+<link rel="stylesheet" href="/css/guidelines.css">
+{{ end }}
+
+{{ define "main" }}
+<main class="main-content">
+  <div class="page-header">
+    <h1 class="page-title">{{ .Title }}</h1>
+    <p class="page-subtitle">{{ .Params.subtitle }}</p>
+  </div>
+  <section class="guidelines-section">
+    <div class="container">
+      <div class="toc-section">
+        <h2 class="toc-title">目次</h2>
+        <ul class="toc-list">
+          {{ range (slice
+            (dict "id" "commission-flow" "label" "ご依頼の流れ")
+            (dict "id" "terms" "label" "利用規約")
+            (dict "id" "payment" "label" "お支払いについて")
+            (dict "id" "revision" "label" "修正について")
+            (dict "id" "delivery" "label" "納期について")
+            (dict "id" "usage-rights" "label" "使用権について")
+            (dict "id" "prohibited" "label" "お受けできないもの")
+            (dict "id" "notes" "label" "注意事項")
+          ) }}
+          <li><a href="#{{ .id }}">{{ .label }}</a></li>
+          {{ end }}
+        </ul>
+      </div>
+
+      <div id="commission-flow" class="guideline-section">
+        <h2 class="section-title">ご依頼の流れ</h2>
+        <div class="flow-steps">
+          {{ range $index, $step := (slice
+            (dict "title" "お問い合わせ" "description" "CONTACT や X DM からご希望の内容・予算・納期をお知らせください。")
+            (dict "title" "お見積り・打ち合わせ" "description" "詳細を伺い、お見積りをご提示します。合意後に正式受注です。")
+            (dict "title" "ラフ制作" "description" "構図やポーズのラフを制作し、ご確認いただきます。")
+            (dict "title" "線画・着色" "description" "ラフ確定後に線画・着色を進め、進捗を共有します。")
+            (dict "title" "最終確認・納品" "description" "完成品をご確認いただき、問題なければ納品となります。")
+          ) }}
+          <div class="step-item">
+            <div class="step-number">{{ printf "%02d" (add $index 1) }}</div>
+            <div class="step-content">
+              <h3 class="step-title">{{ $step.title }}</h3>
+              <p class="step-description">{{ $step.description }}</p>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+
+      <div id="terms" class="guideline-section">
+        <h2 class="section-title">利用規約</h2>
+        <div class="terms-content">
+          <div class="term-item">
+            <h3 class="term-title">基本事項</h3>
+            <ul class="term-list">
+              <li>ご依頼は成人のお客様に限ります</li>
+              <li>個人・法人どちらも対応可能です</li>
+              <li>海外からのご依頼も可（日本語・英語）</li>
+              <li>キャンセルは制作開始前まで</li>
+            </ul>
+          </div>
+          <div class="term-item">
+            <h3 class="term-title">著作権について</h3>
+            <ul class="term-list">
+              <li>著作権は制作者（WANYA）に帰属します</li>
+              <li>依頼者様には使用権を付与します</li>
+              <li>作品はポートフォリオ掲載する場合があります</li>
+              <li>二次創作は原作者規約に従います</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="payment" class="guideline-section">
+        <h2 class="section-title">お支払いについて</h2>
+        <div class="payment-content">
+          <div class="payment-methods">
+            <h3 class="payment-title">お支払い方法</h3>
+            <div class="payment-grid">
+              <div class="payment-item">
+                <div class="payment-icon">💰</div>
+                <div class="payment-content">
+                  <div class="payment-name">銀行振込</div>
+                  <div class="payment-desc">手数料はご負担ください</div>
+                </div>
+              </div>
+              <div class="payment-item">
+                <div class="payment-icon">💳</div>
+                <div class="payment-content">
+                  <div class="payment-name">PayPal</div>
+                  <div class="payment-desc">海外からもスムーズ</div>
+                </div>
+              </div>
+              <div class="payment-item">
+                <div class="payment-icon">🎫</div>
+                <div class="payment-content">
+                  <div class="payment-name">BOOTH決済</div>
+                  <div class="payment-desc">クレカ・コンビニ払い対応</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="payment-timing">
+            <h3 class="payment-title">お支払いタイミング</h3>
+            <ul class="timing-list">
+              <li><strong>1万円未満：</strong>完成後一括払い</li>
+              <li><strong>1万円以上：</strong>50%前払い＋完成後残額</li>
+              <li><strong>3万円以上：</strong>個別相談</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="revision" class="guideline-section">
+        <h2 class="section-title">修正について</h2>
+        <div class="revision-content">
+          <div class="revision-free">
+            <h3 class="revision-title">✅ 無料修正範囲</h3>
+            <ul class="revision-list">
+              <li>ラフ段階での構図・ポーズ変更</li>
+              <li>色味の微調整</li>
+              <li>小さな部位の修正</li>
+              <li>背景の簡単な変更</li>
+            </ul>
+          </div>
+          <div class="revision-paid">
+            <h3 class="revision-title">💰 有料修正範囲</h3>
+            <ul class="revision-list">
+              <li>線画完成後の大幅な構図変更</li>
+              <li>キャラクターの追加・削除</li>
+              <li>衣装の大幅な変更</li>
+              <li>背景の大幅な変更</li>
+            </ul>
+            <p class="revision-note">有料修正は元料金の20-50%を目安にお見積りします。</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="delivery" class="guideline-section">
+        <h2 class="section-title">納期について</h2>
+        <div class="delivery-content">
+          <div class="delivery-times">
+            {{ range (slice
+              (dict "type" "Skebイラスト" "time" "1-3日")
+              (dict "type" "デフォルメイラスト" "time" "3-7日")
+              (dict "type" "等身大イラスト" "time" "1-2週間")
+              (dict "type" "配信用スタンプ" "time" "3-5日")
+            ) }}
+            <div class="delivery-item">
+              <div class="delivery-type">{{ .type }}</div>
+              <div class="delivery-time">{{ .time }}</div>
+            </div>
+            {{ end }}
+          </div>
+          <div class="delivery-notes">
+            <h3>納期に関する注意事項</h3>
+            <ul>
+              <li>繁忙期は納期が延長する場合があります</li>
+              <li>お急ぎの場合は特急料金（+50%）で対応可能</li>
+              <li>進捗は随時ご報告いたします</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="usage-rights" class="guideline-section">
+        <h2 class="section-title">使用権について</h2>
+        <div class="usage-content">
+          <div class="usage-allowed">
+            <h3 class="usage-title">✅ 可能な使用用途</h3>
+            <ul class="usage-list">
+              <li>SNSアイコン・ヘッダー</li>
+              <li>個人サイト</li>
+              <li>配信での使用</li>
+              <li>印刷物（名刺・ポストカード等）</li>
+              <li>小規模グッズ制作</li>
+            </ul>
+          </div>
+          <div class="usage-restricted">
+            <h3 class="usage-title">⚠️ 制限付き使用</h3>
+            <ul class="usage-list">
+              <li>商用利用は事前相談（追加料金あり）</li>
+              <li>大量グッズ制作はライセンス料が発生</li>
+              <li>転売・再配布は禁止</li>
+              <li>AI学習データへの利用は禁止</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="prohibited" class="guideline-section">
+        <h2 class="section-title">お受けできないもの</h2>
+        <div class="prohibited-content">
+          <div class="prohibited-grid">
+            {{ range (slice
+              (dict "icon" "🔞" "title" "成人向け" "desc" "過度な露出・性的表現")
+              (dict "icon" "⚔️" "title" "暴力的表現" "desc" "グロテスク・残酷な表現")
+              (dict "icon" "🚫" "title" "差別的内容" "desc" "人種・宗教等への差別")
+              (dict "icon" "⚖️" "title" "権利侵害" "desc" "著作権・肖像権の侵害")
+              (dict "icon" "💊" "title" "違法行為" "desc" "薬物・犯罪を助長する内容")
+              (dict "icon" "👥" "title" "実在人物" "desc" "許可のない実在人物の描写")
+            ) }}
+            <div class="prohibited-item">
+              <div class="prohibited-icon">{{ .icon }}</div>
+              <div class="prohibited-content">
+                <div class="prohibited-title">{{ .title }}</div>
+                <div class="prohibited-desc">{{ .desc }}</div>
+              </div>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+
+      <div id="notes" class="guideline-section">
+        <h2 class="section-title">注意事項</h2>
+        <div class="notes-content">
+          <div class="note-important">
+            <h3 class="note-title">重要事項</h3>
+            <ul class="note-list">
+              <li>ガイドラインは予告なく変更する場合があります</li>
+              <li>判断に迷う内容は事前にご相談ください</li>
+              <li>制作開始後のキャンセルは不可</li>
+              <li>天災等による遅延は免責とさせていただきます</li>
+            </ul>
+          </div>
+          <div class="note-contact">
+            <h3 class="note-title">ご不明な点について</h3>
+            <p>ガイドラインについてご不明な点がございましたら、お気軽にお問い合わせください。</p>
+            <a href="/contact/" class="contact-button">お問い合わせ</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{{ end }}

@@ -1,0 +1,8 @@
+{{- $value := int .value -}}
+{{- if lt $value 1000 -}}
+  {{- printf "%d" $value -}}
+{{- else -}}
+  {{- $high := div $value 1000 -}}
+  {{- $low := mod $value 1000 -}}
+  {{- printf "%s,%03d" (partial "helpers/format-number.html" (dict "value" $high)) $low -}}
+{{- end -}}

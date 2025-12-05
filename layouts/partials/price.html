@@ -1,0 +1,14 @@
+{{ $name := .name | default "" }}
+{{ $desc := .description | default "" }}
+{{ $price := .price | default 0 }}
+{{ $prefix := "" }}
+{{ if or (strings.Contains $name "追加") (strings.Contains $name "差分") }}
+  {{ $prefix = "+" }}
+{{ end }}
+{{ $suffix := "" }}
+{{ if or (strings.Contains $desc "変動") (strings.Contains $desc "程度") }}
+  {{ $suffix = "〜" }}
+{{ end }}
+{{ $amount := int $price }}
+{{ $formatted := partial "helpers/format-number.html" (dict "value" $amount) }}
+{{ printf "%s¥%s%s" $prefix $formatted $suffix }}

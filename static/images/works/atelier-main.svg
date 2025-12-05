@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#fff2a8" />
+  <rect x="80" y="80" width="640" height="440" fill="#ffffff" rx="20" stroke="#f5cf87" stroke-width="6" />
+  <text x="50%" y="50%" font-family="'RocknRoll One', sans-serif" font-size="44" fill="#d57b7b" text-anchor="middle">Atelier Poster</text>
+  <text x="50%" y="60%" font-size="22" fill="#8b5d5d" text-anchor="middle">Illustration Placeholder</text>
+</svg>
