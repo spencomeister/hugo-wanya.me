@@ -17,6 +17,7 @@ disableKinds = ["RSS", "taxonomy", "term"]
   contactSubtext = "日本語 / English (basic)"
   formPlaceholder = "フォームは現在準備中です"
   contactEnabled = false
+  turnstileSiteKey = "0x4AAAAAACE58aRI554J7CBc"
 
 [[menu.main]]
   name = "TOP"

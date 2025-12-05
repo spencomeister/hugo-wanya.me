@@ -100,6 +100,11 @@
               <a href="/guidelines/" target="_blank">利用規約・ガイドライン</a>に同意します <span class="required">*</span>
             </label>
           </div>
+          {{ with site.Params.turnstileSiteKey }}
+          <div class="form-group">
+            <div class="cf-turnstile" data-sitekey="{{ . }}" data-theme="light"></div>
+          </div>
+          {{ end }}
           <div class="form-submit">
             <button type="submit" class="btn btn-primary submit-btn">
               <span class="btn-text">送信する</span>
@@ -154,5 +159,8 @@
 {{ end }}
 
 {{ define "page_scripts" }}
+{{ with site.Params.turnstileSiteKey }}
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
+{{ end }}
 <script src="/js/contact.js" defer></script>
 {{ end }}
