@@ -44,12 +44,13 @@
         <h2 class="section-title">お問い合わせフォーム</h2>
         <form class="contact-form" id="contactForm" data-endpoint="/api/contact">
           <div class="form-message info" data-form-message aria-live="polite">
-            Cloudflare Pages + Workers + Resend を経由して送信内容をお届けします。2営業日以内の返信を目安にご連絡いたします。
+            2営業日以内の返信を目安にご連絡いたします。
           </div>
           <div class="form-row">
             <div class="form-group">
               <label for="contact_name" class="form-label">お名前 <span class="required">*</span></label>
-              <input type="text" id="contact_name" name="contact_name" class="form-input" required>
+              <input type="text" id="contact_name" name="contact_name" class="form-input" minlength="2" maxlength="120" aria-describedby="contact_name_hint" required>
+              <p id="contact_name_hint" class="form-hint">2文字以上で入力してください。</p>
             </div>
             <div class="form-group">
               <label for="contact_email" class="form-label">メールアドレス <span class="required">*</span></label>
@@ -91,7 +92,8 @@
           </div>
           <div class="form-group">
             <label for="contact_message" class="form-label">メッセージ <span class="required">*</span></label>
-            <textarea id="contact_message" name="contact_message" class="form-textarea" rows="6" required></textarea>
+            <textarea id="contact_message" name="contact_message" class="form-textarea" rows="6" minlength="10" maxlength="3000" aria-describedby="contact_message_hint" required></textarea>
+            <p id="contact_message_hint" class="form-hint">10文字以上でご入力ください。</p>
           </div>
           <div class="form-group">
             <label class="form-checkbox-label">

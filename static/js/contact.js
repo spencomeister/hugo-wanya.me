@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitBtn = form.querySelector('.submit-btn');
     const btnText = submitBtn?.querySelector('.btn-text');
     const btnLoading = submitBtn?.querySelector('.btn-loading');
+    const MIN_NAME_LENGTH = 2;
+    const MIN_MESSAGE_LENGTH = 10;
 
     const setFormMessage = (variant, text) => {
         if (!messageBox) {
@@ -63,6 +65,22 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     };
 
+    const validateClientPayload = (payload) => {
+        if (!payload.name || payload.name.length < MIN_NAME_LENGTH) {
+            return 'お名前は2文字以上で入力してください。';
+        }
+        if (!payload.subject) {
+            return '件名を選択してください。';
+        }
+        if (!payload.message || payload.message.length < MIN_MESSAGE_LENGTH) {
+            return 'メッセージは10文字以上で入力してください。';
+        }
+        if (!payload.turnstileToken) {
+            return 'セキュリティ検証が完了していません。数秒後に再度お試しください。';
+        }
+        return null;
+    };
+
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
 
@@ -74,6 +92,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const { agreementAccepted, payload } = serializeForm();
         if (!agreementAccepted) {
             setFormMessage('error', '利用規約への同意が必要です。');
+            return;
+        }
+
+        const clientError = validateClientPayload(payload);
+        if (clientError) {
+            setFormMessage('error', clientError);
             return;
         }
 
@@ -92,7 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const result = await response.json().catch(() => ({}));
 
             if (!response.ok || !result.success) {
-                throw new Error(result.error || '送信に失敗しました。時間をおいて再度お試しください。');
+                const remoteMessage = result.error || '送信に失敗しました。時間をおいて再度お試しください。';
+                throw new Error(remoteMessage);
             }
 
             setFormMessage('success', '送信が完了しました。確認後にご連絡いたします。');
