@@ -21,7 +21,7 @@
       {{ $hasContent := false }}
 
       {{ range $cat := $categories }}
-        {{ $filtered := where $items "category" (slice $cat.slug) }}
+        {{ $filtered := where $items "category" "intersect" (slice $cat.slug) }}
         {{ if gt (len $filtered) 0 }}
           {{ $hasContent = true }}
           <div class="work-section" id="{{ $cat.slug }}">
