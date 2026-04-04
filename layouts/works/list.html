@@ -29,51 +29,36 @@
             <p class="work-category-desc">{{ $cat.description }}</p>
 
             <div class="work-item">
-              <div class="carousel-container">
-                {{/* Outer carousel: cycles through works in this category */}}
-                <div class="carousel outer-carousel" data-work="{{ $cat.slug }}">
-                  <div class="carousel-track">
-                    {{ range $wi, $work := $filtered }}
-                    <div class="carousel-slide {{ if eq $wi 0 }}active{{ end }}">
-                      {{/* Inner image carousel for this work */}}
-                      {{ $images := $work.images }}
-                      {{ if $images }}
-                      <div class="inner-carousel" data-inner="{{ $cat.slug }}-{{ $wi }}">
-                        <div class="inner-track">
-                          {{ range $ii, $img := $images }}
-                          <div class="inner-slide {{ if eq $ii 0 }}active{{ end }}">
-                            <img src="{{ $img.url }}?w=800&q=80" alt="{{ $work.title }}" loading="lazy">
-                          </div>
-                          {{ end }}
-                        </div>
-                        {{ if gt (len $images) 1 }}
-                        <button class="inner-btn prev" data-direction="prev">‹</button>
-                        <button class="inner-btn next" data-direction="next">›</button>
-                        <div class="inner-indicators">
-                          {{ range $ii, $_ := $images }}
-                          <span class="inner-dot {{ if eq $ii 0 }}active{{ end }}" data-slide="{{ $ii }}"></span>
-                          {{ end }}
-                        </div>
-                        {{ end }}
-                      </div>
-                      {{ else }}
-                      <div class="no-image">画像がありません</div>
-                      {{ end }}
-                    </div>
-                    {{ end }}
-                  </div>
+              {{ $allImages := slice }}
+              {{ range $work := $filtered }}
+                {{ range $img := $work.images }}
+                  {{ $allImages = $allImages | append $img }}
+                {{ end }}
+              {{ end }}
 
-                  {{ if gt (len $filtered) 1 }}
-                  <button class="carousel-btn prev" data-direction="prev">‹</button>
-                  <button class="carousel-btn next" data-direction="next">›</button>
-                  <div class="carousel-indicators">
-                    {{ range $wi, $_ := $filtered }}
-                    <span class="indicator {{ if eq $wi 0 }}active{{ end }}" data-slide="{{ $wi }}"></span>
-                    {{ end }}
+              {{ if gt (len $allImages) 0 }}
+              <div class="carousel image-carousel" data-category="{{ $cat.slug }}">
+                <div class="carousel-track">
+                  {{ range $i, $img := $allImages }}
+                  <div class="carousel-slide {{ if eq $i 0 }}active{{ end }}">
+                    <img src="{{ $img.url }}?w=800&q=80" alt="{{ $cat.title }}" loading="lazy">
                   </div>
                   {{ end }}
                 </div>
+
+                {{ if gt (len $allImages) 1 }}
+                <button class="carousel-btn prev" data-direction="prev">‹</button>
+                <button class="carousel-btn next" data-direction="next">›</button>
+                <div class="carousel-indicators">
+                  {{ range $i, $_ := $allImages }}
+                  <span class="indicator {{ if eq $i 0 }}active{{ end }}" data-slide="{{ $i }}"></span>
+                  {{ end }}
+                </div>
+                {{ end }}
               </div>
+              {{ else }}
+              <div class="no-image">画像がありません</div>
+              {{ end }}
             </div>
           </div>
         {{ end }}
