@@ -3,17 +3,28 @@
 {{ end }}
 
 {{ define "main" }}
-{{ $profile := site.Data.about.profile.profile }}
+{{ $p := hugo.Data.about.profile }}
 <main class="main-content about-page">
   <div class="page-header">
+    <div class="page-header-deco">
+      <span class="header-sparkle">★</span>
+      <span class="header-sparkle">💖</span>
+      <span class="header-sparkle">✨</span>
+    </div>
     <h1 class="page-title">{{ .Title }}</h1>
     <p class="page-subtitle">{{ .Params.subtitle }}</p>
   </div>
+
   <section class="about-section">
     <div class="container">
+      {{/* Profile Card */}}
       <div class="profile-section">
         <div class="profile-image">
-          <img src="/images/about.png" alt="Profile" class="profile-img">
+          {{ with $p.image }}
+            <img src="{{ .url }}?w=600&q=80" alt="Profile" class="profile-img">
+          {{ else }}
+            <img src="/images/about.png" alt="Profile" class="profile-img">
+          {{ end }}
           <div class="profile-decoration">
             <span class="deco-element star">★</span>
             <span class="deco-element heart">💖</span>
@@ -21,28 +32,36 @@
           </div>
         </div>
         <div class="profile-info">
-          <h2 class="profile-name">{{ $profile.title }}</h2>
-          <p class="profile-title">{{ $profile.role }}</p>
+          <h2 class="profile-name">{{ $p.name | default "WANYA" }}</h2>
+          <p class="profile-title">{{ $p.role | default "イラストレーター" }}</p>
           <div class="profile-description">
-            {{ range $profile.description }}
-              <p>{{ . }}</p>
+            {{ with $p.description }}
+              {{ if reflect.IsSlice . }}
+                {{ range . }}<p>{{ . }}</p>{{ end }}
+              {{ else }}
+                {{ . | safeHTML }}
+              {{ end }}
             {{ end }}
           </div>
+          {{ with $p.stats }}
           <div class="profile-stats">
-            {{ range $profile.stats }}
+            {{ range . }}
             <div class="stat-item">
               <div class="stat-number">{{ .value }}</div>
               <div class="stat-label">{{ .label }}</div>
             </div>
             {{ end }}
           </div>
+          {{ end }}
         </div>
       </div>
 
+      {{/* Specialties */}}
+      {{ with $p.specialties }}
       <div class="skills-section">
         <h2 class="section-title">得意分野・スキル</h2>
         <div class="skills-grid">
-          {{ range $profile.specialties }}
+          {{ range . }}
           <div class="skill-item">
             <div class="skill-icon">{{ .emoji }}</div>
             <div class="skill-content">
@@ -53,11 +72,14 @@
           {{ end }}
         </div>
       </div>
+      {{ end }}
 
+      {{/* Tools */}}
+      {{ with $p.tools }}
       <div class="tools-section">
         <h2 class="section-title">使用ツール・ソフトウェア</h2>
         <div class="tools-grid">
-          {{ range $profile.tools }}
+          {{ range . }}
           <div class="tool-item">
             <div class="tool-name">{{ .name }}</div>
             <div class="tool-usage">{{ .description }}</div>
@@ -65,11 +87,14 @@
           {{ end }}
         </div>
       </div>
+      {{ end }}
 
+      {{/* Timeline */}}
+      {{ with $p.achievements }}
       <div class="experience-section">
         <h2 class="section-title">活動実績・経歴</h2>
-        <div class="timeline">
-          {{ range $profile.achievements }}
+        <div class="timeline {{ if le (len .) 2 }}timeline-compact{{ end }}">
+          {{ range . }}
           <div class="timeline-item">
             <div class="timeline-date">{{ .date }}</div>
             <div class="timeline-content">
@@ -80,7 +105,9 @@
           {{ end }}
         </div>
       </div>
+      {{ end }}
 
+      {{/* CTA */}}
       <div class="about-cta">
         <h2 class="cta-title">お仕事のご依頼・ご相談</h2>
         <p class="cta-description">どんな小さなことでもお気軽にお声かけください。一緒に素敵な作品を作りましょう！</p>

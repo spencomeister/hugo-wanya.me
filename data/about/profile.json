@@ -1,0 +1,76 @@
+{
+  "name": "WANYA",
+  "role": "イラストレーター・アーティスト",
+  "description": [
+    "こんにちは、WANYAです。イラスト制作、キャラクターデザイン、アート作品の制作を手掛けています。",
+    "デジタルイラストを中心に幅広いスタイルで制作し、ご依頼主の想いを丁寧に形にします。",
+    "どんな小さなご相談でもお気軽にお声かけください。"
+  ],
+  "stats": [
+    {
+      "label": "制作実績",
+      "value": "100+"
+    },
+    {
+      "label": "活動歴",
+      "value": "3年"
+    },
+    {
+      "label": "平均制作時間",
+      "value": "24時間"
+    }
+  ],
+  "specialties": [
+    {
+      "emoji": "🎨",
+      "title": "キャラクターデザイン",
+      "description": "オリジナル・二次創作キャラクターを幅広く制作"
+    },
+    {
+      "emoji": "✨",
+      "title": "Live2Dモデル",
+      "description": "VTuber向けのLive2Dモデル設定・モデリング"
+    },
+    {
+      "emoji": "🌟",
+      "title": "デフォルメイラスト",
+      "description": "かわいらしいSD・スタンプ用イラスト"
+    }
+  ],
+  "tools": [
+    {
+      "name": "Adobe Photoshop",
+      "description": "メインイラスト制作"
+    },
+    {
+      "name": "CLIP STUDIO PAINT",
+      "description": "線画・カラーリング"
+    },
+    {
+      "name": "Live2D Cubism",
+      "description": "Live2Dモデル制作"
+    }
+  ],
+  "achievements": [
+    {
+      "date": "2022年",
+      "title": "フリーランス活動開始",
+      "description": "イラストレーターとして本格的に活動を開始"
+    },
+    {
+      "date": "2023年",
+      "title": "Live2Dモデル制作開始",
+      "description": "VTuber向けLive2Dモデル制作をスタート"
+    },
+    {
+      "date": "2024年",
+      "title": "制作実績100件達成",
+      "description": "様々なジャンルでの制作実績が100件を突破"
+    },
+    {
+      "date": "2025年",
+      "title": "現在",
+      "description": "新しい表現技法の習得に励んでいます"
+    }
+  ]
+}

@@ -3,7 +3,7 @@
 {{ end }}
 
 {{ define "main" }}
-{{ $sections := site.Data.price.sections.sections }}
+{{ $d := hugo.Data.price.price }}
 <main class="main-content price-page">
   <div class="page-header">
     <h1 class="page-title">{{ .Title }}</h1>
@@ -12,13 +12,15 @@
   <section class="price-section">
     <div class="container">
       <div class="price-intro">
-        <p>各種イラスト制作の料金表です。詳細な内容やオプションについては、お気軽にお問い合わせください。</p>
-        <p class="note">※価格は税込み表示です。制作内容により料金が変動する場合があります。</p>
+        <p>{{ $d.intro | default "各種イラスト制作の料金表です。詳細な内容やオプションについては、お気軽にお問い合わせください。" }}</p>
+        {{ with $d.note }}<p class="note">{{ . }}</p>{{ end }}
       </div>
       {{ with .Content }}
         <div class="custom-content">{{ . }}</div>
       {{ end }}
-      {{ range $sections }}
+
+      {{/* Price table sections */}}
+      {{ range $d.sections }}
       <div class="price-table-container">
         <h2 class="table-title">{{ .title }}</h2>
         <div class="price-table">
@@ -38,48 +40,31 @@
       </div>
       {{ end }}
 
+      {{/* Options */}}
+      {{ with $d.options }}
       <div class="options-section">
         <h2 class="section-title">オプション・追加料金</h2>
         <div class="options-grid">
+          {{ range . }}
           <div class="option-item">
-            <div class="option-icon">⚡</div>
-            <div class="option-title">特急料金</div>
-            <div class="option-price">+50%</div>
-            <p class="option-description">1週間以内の納期をご希望の場合</p>
+            <div class="option-icon">{{ .icon }}</div>
+            <div class="option-title">{{ .title }}</div>
+            <div class="option-price">{{ .price }}</div>
+            <p class="option-description">{{ .description }}</p>
           </div>
-          <div class="option-item">
-            <div class="option-icon">🔄</div>
-            <div class="option-title">追加修正</div>
-            <div class="option-price">¥2,000〜</div>
-            <p class="option-description">規定回数を超える修正の場合</p>
-          </div>
-          <div class="option-item">
-            <div class="option-icon">💼</div>
-            <div class="option-title">商用利用</div>
-            <div class="option-price">+30%</div>
-            <p class="option-description">商用利用をご希望の場合</p>
-          </div>
-          <div class="option-item">
-            <div class="option-icon">🔒</div>
-            <div class="option-title">作品非公開</div>
-            <div class="option-price">+¥5,000</div>
-            <p class="option-description">ポートフォリオ掲載を希望されない場合</p>
-          </div>
+          {{ end }}
         </div>
       </div>
+      {{ end }}
 
+      {{/* Payment flow */}}
+      {{ with $d.flow }}
       <div class="payment-section">
         <h2 class="section-title">お支払い・制作の流れ</h2>
         <div class="flow-container">
-          {{ range $index, $step := (slice
-            (dict "title" "お問い合わせ・見積もり" "description" "詳細をお聞かせください。お見積もりをご提示いたします。")
-            (dict "title" "前金お支払い" "description" "制作費の50%を前金としてお支払いいただきます。")
-            (dict "title" "制作開始・ラフ提出" "description" "ラフ画を作成し、確認していただきます。")
-            (dict "title" "仕上げ・完成" "description" "着色・仕上げを行い、完成品をお渡しします。")
-            (dict "title" "残金お支払い" "description" "残り50%をお支払いいただき、完了です。")
-          ) }}
+          {{ range $i, $step := . }}
             <div class="flow-step">
-              <div class="step-number">{{ add $index 1 }}</div>
+              <div class="step-number">{{ add $i 1 }}</div>
               <div class="step-content">
                 <h3>{{ $step.title }}</h3>
                 <p>{{ $step.description }}</p>
@@ -88,6 +73,7 @@
           {{ end }}
         </div>
       </div>
+      {{ end }}
 
       <div class="price-cta">
         <h2 class="cta-title">お見積もり・ご相談</h2>

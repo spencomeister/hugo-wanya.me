@@ -3,83 +3,90 @@
 {{ end }}
 
 {{ define "main" }}
-<div class="loading" id="loading">
-  <div class="loading-content">
-    <div class="loading-text">
-      <span class="jump-letter">W</span>
-      <span class="jump-letter">O</span>
-      <span class="jump-letter">R</span>
-      <span class="jump-letter">K</span>
-      <span class="jump-space"></span>
-      <span class="jump-letter">G</span>
-      <span class="jump-letter">A</span>
-      <span class="jump-letter">L</span>
-      <span class="jump-letter">L</span>
-      <span class="jump-letter">E</span>
-      <span class="jump-letter">R</span>
-      <span class="jump-letter">Y</span>
-    </div>
-    <div class="loading-subtitle">動画コンテンツを読み込み中...</div>
-    <div class="loading-role">WANYA ILLUSTRATION WORKS</div>
-  </div>
-</div>
-
 <main class="main-content">
   <div class="page-header">
+    <div class="page-header-deco">
+      <span class="header-sparkle">✨</span>
+      <span class="header-sparkle">⭐</span>
+      <span class="header-sparkle">🌟</span>
+    </div>
     <h1 class="page-title">{{ .Title }}</h1>
     <p class="page-subtitle">{{ .Params.subtitle }}</p>
   </div>
+
   <section class="works-gallery">
     <div class="container">
-      {{ $allWorks := where .Site.RegularPages "Type" "works" }}
-      {{ $categories := site.Data.works.categories.categories }}
+      {{ $items := hugo.Data.works.items.contents }}
+      {{ $categories := hugo.Data.works.categories.categories }}
       {{ $hasContent := false }}
-      {{ range $categories }}
-        {{ $filtered := where $allWorks "Params.categories" "intersect" (slice .slug) }}
+
+      {{ range $cat := $categories }}
+        {{ $filtered := where $items "category" (slice $cat.slug) }}
         {{ if gt (len $filtered) 0 }}
           {{ $hasContent = true }}
-          {{ $sorted := sort $filtered "Params.order" }}
-          <div class="work-section" id="{{ .slug }}">
-            <h3 class="work-title">{{ .title }}</h3>
+          <div class="work-section" id="{{ $cat.slug }}">
+            <h3 class="work-title">{{ $cat.title }}</h3>
+            <p class="work-category-desc">{{ $cat.description }}</p>
+
             <div class="work-item">
               <div class="carousel-container">
-                <div class="carousel" data-work="{{ .slug }}">
+                {{/* Outer carousel: cycles through works in this category */}}
+                <div class="carousel outer-carousel" data-work="{{ $cat.slug }}">
                   <div class="carousel-track">
-                    {{ range $index, $work := $sorted }}
-                      {{ $media := index (or $work.Params.media (slice (dict "type" "image" "src" "/images/wanya.png" "alt" $work.Title))) 0 }}
-                      <div class="carousel-slide {{ if eq $index 0 }}active{{ end }}">
-                        {{ if eq $media.type "video" }}
-                          <video {{ if eq $index 0 }}autoplay{{ end }} muted loop playsinline preload="metadata">
-                            <source src="{{ $media.src }}" type="video/mp4">
-                          </video>
-                        {{ else }}
-                          <img src="{{ $media.src }}" alt="{{ $media.alt }}">
-                        {{ end }}
-                      </div>
-                    {{ end }}
-                  </div>
-                  {{ if gt (len $sorted) 1 }}
-                    <button class="carousel-btn prev" data-direction="prev">‹</button>
-                    <button class="carousel-btn next" data-direction="next">›</button>
-                    <div class="carousel-indicators">
-                      {{ range $i, $_ := seq 0 (sub (len $sorted) 1) }}
-                        <span class="indicator {{ if eq $i 0 }}active{{ end }}" data-slide="{{ $i }}"></span>
-                      {{ end }}
-                    </div>
-                  {{ end }}
-                </div>
-                <div class="work-info">
-                  <div class="work-details">
-                    {{ range $index, $work := $sorted }}
-                      <div class="slide-info" data-slide="{{ $index }}" {{ if eq $index 0 }}style="display: block;"{{ else }}style="display: none;"{{ end }}>
-                        <h4 class="client-name">{{ with $work.Params.client }}{{ . }}{{ else }}{{ $work.Title }}{{ end }}</h4>
-                        {{ with $work.Params.comment }}<p class="work-comment">{{ . }}</p>{{ end }}
-                        {{ with $work.Params.tags }}
-                        <div class="work-tags">
-                          {{ range . }}<span class="tag">{{ . }}</span>{{ end }}
+                    {{ range $wi, $work := $filtered }}
+                    <div class="carousel-slide {{ if eq $wi 0 }}active{{ end }}">
+                      {{/* Inner image carousel for this work */}}
+                      {{ $images := $work.images }}
+                      {{ if $images }}
+                      <div class="inner-carousel" data-inner="{{ $cat.slug }}-{{ $wi }}">
+                        <div class="inner-track">
+                          {{ range $ii, $img := $images }}
+                          <div class="inner-slide {{ if eq $ii 0 }}active{{ end }}">
+                            <img src="{{ $img.url }}?w=800&q=80" alt="{{ $work.title }}" loading="lazy">
+                          </div>
+                          {{ end }}
+                        </div>
+                        {{ if gt (len $images) 1 }}
+                        <button class="inner-btn prev" data-direction="prev">‹</button>
+                        <button class="inner-btn next" data-direction="next">›</button>
+                        <div class="inner-indicators">
+                          {{ range $ii, $_ := $images }}
+                          <span class="inner-dot {{ if eq $ii 0 }}active{{ end }}" data-slide="{{ $ii }}"></span>
+                          {{ end }}
                         </div>
                         {{ end }}
                       </div>
+                      {{ else }}
+                      <div class="no-image">画像がありません</div>
+                      {{ end }}
+                    </div>
+                    {{ end }}
+                  </div>
+
+                  {{ if gt (len $filtered) 1 }}
+                  <button class="carousel-btn prev" data-direction="prev">‹</button>
+                  <button class="carousel-btn next" data-direction="next">›</button>
+                  <div class="carousel-indicators">
+                    {{ range $wi, $_ := $filtered }}
+                    <span class="indicator {{ if eq $wi 0 }}active{{ end }}" data-slide="{{ $wi }}"></span>
+                    {{ end }}
+                  </div>
+                  {{ end }}
+                </div>
+
+                {{/* Work info panel */}}
+                <div class="work-info">
+                  <div class="work-details">
+                    {{ range $wi, $work := $filtered }}
+                    <div class="slide-info" data-slide="{{ $wi }}" {{ if eq $wi 0 }}style="display: block;"{{ else }}style="display: none;"{{ end }}>
+                      <h4 class="work-name">{{ $work.title }}</h4>
+                      {{ with $work.description }}<p class="work-description">{{ . }}</p>{{ end }}
+                      {{ with $work.tags }}
+                      <div class="work-tags">
+                        {{ range . }}<span class="tag">{{ . }}</span>{{ end }}
+                      </div>
+                      {{ end }}
+                    </div>
                     {{ end }}
                   </div>
                 </div>
@@ -88,11 +95,13 @@
           </div>
         {{ end }}
       {{ end }}
+
       {{ if not $hasContent }}
-        <div class="no-works-message">
-          <h3>作品がまだ登録されていません</h3>
-          <p>`content/works/` に Markdown を追加してください。</p>
-        </div>
+      <div class="no-works-message">
+        <div class="no-works-icon">🎨</div>
+        <h3>作品を準備中です</h3>
+        <p>もうしばらくお待ちください。</p>
+      </div>
       {{ end }}
     </div>
   </section>

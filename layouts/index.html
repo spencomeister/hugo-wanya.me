@@ -25,6 +25,7 @@
 {{ end }}
 
 <main class="main-content" id="top">
+  <div class="hero-bento-layout">
   <section id="hero" class="main-visual">
     <div class="main-image">
       <img src="/images/wanya.png" alt="WANYA Main Visual" class="fv-img" id="mainImage">
@@ -48,64 +49,29 @@
     </div>
   </section>
 
-  {{/* Section helper */}}
-    {{ $sections := slice
-      (dict "id" "about" "title" "ABOUT" "description" "イラスト制作、アート作品などをまとめたプロフィール。"
-        "url" "/about/" "cta" "私について" "elements" (slice
-          (dict "class" "star" "icon" "★")
-          (dict "class" "tulip" "icon" "🌷")
-          (dict "class" "circle" "icon" "●")
-          (dict "class" "jagged" "icon" "⚡")
-        ))
-      (dict "id" "works" "title" "WORKS" "description" "過去のイラストやアニメーションを集めたギャラリー。"
-        "url" "/works/" "cta" "実績を見る" "elements" (slice
-          (dict "class" "star" "icon" "★")
-          (dict "class" "wave" "icon" "〜")
-          (dict "class" "circle" "icon" "●")
-          (dict "class" "cloud" "icon" "☁")
-        ))
-      (dict "id" "price" "title" "PRICE" "description" "サービス別の料金表とオプションをご案内します。"
-        "url" "/price/" "cta" "料金表を見る" "elements" (slice
-          (dict "class" "star" "icon" "★")
-          (dict "class" "circle" "icon" "●")
-          (dict "class" "wave" "icon" "〜")
-          (dict "class" "cloud" "icon" "💰")
-        ))
-      (dict "id" "guidelines" "title" "GUIDELINES" "description" "ご依頼前にご確認いただきたいガイドラインを掲載。"
-        "url" "/guidelines/" "cta" "ガイドラインを見る" "elements" (slice
-          (dict "class" "star" "icon" "★")
-          (dict "class" "wave" "icon" "〜")
-          (dict "class" "circle" "icon" "●")
-          (dict "class" "jagged" "icon" "⚡")
-        ))
-  }}
-
-  {{ range $sections }}
-  <section id="{{ .id }}" class="section {{ .id }}-section">
-    <div class="container">
-      <div class="section-content">
-        <h2 class="section-title">{{ .title }}</h2>
-        <p class="section-description">{{ .description }}</p>
-        <a href="{{ .url }}" class="section-btn"><span>{{ .cta }}</span></a>
-      </div>
-      <div class="section-visual">
-        <div class="decorative-elements">
-          {{ range .elements }}
-            <span class="element {{ .class }}">{{ .icon }}</span>
-          {{ end }}
-        </div>
-      </div>
-    </div>
-  </section>
-  {{ end }}
-
-  <section id="contact" class="section contact-section">
-    <div class="container">
-      <div class="contact-content">
-        <h2 class="section-title">CONTACT</h2>
-        <a href="/contact/" class="contact-btn"><span>{{ site.Params.contactCTA }}</span></a>
-      </div>
-    </div>
-  </section>
+  {{/* Side Navigation */}}
+  <nav class="side-nav" data-stagger>
+    <a href="/about/" class="side-nav-item side-nav-about fade-up">
+      <span class="side-nav-icon">🎨</span>
+      <span class="side-nav-label">ABOUT</span>
+    </a>
+    <a href="/works/" class="side-nav-item side-nav-works fade-up">
+      <span class="side-nav-icon">✨</span>
+      <span class="side-nav-label">WORKS</span>
+    </a>
+    <a href="/price/" class="side-nav-item side-nav-price fade-up">
+      <span class="side-nav-icon">💰</span>
+      <span class="side-nav-label">PRICE</span>
+    </a>
+    <a href="/guidelines/" class="side-nav-item side-nav-guidelines fade-up">
+      <span class="side-nav-icon">📋</span>
+      <span class="side-nav-label">GUIDELINES</span>
+    </a>
+    <a href="/contact/" class="side-nav-item side-nav-contact fade-up">
+      <span class="side-nav-icon">💌</span>
+      <span class="side-nav-label">CONTACT</span>
+    </a>
+  </nav>
+  </div>{{/* /.hero-bento-layout */}}
 </main>
 {{ end }}

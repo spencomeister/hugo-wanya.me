@@ -1,445 +1,178 @@
-/* Price Page Specific Styles */
-.main-content.price-page {
-    padding-top: 80px;
-    min-height: 100vh;
-}
+/* ===== Price Page ===== */
+.main-content.price-page { padding-top:80px; min-height:100vh; }
 
 .price-page .page-header {
-    text-align: center;
-    padding: 80px 0 60px;
-    background: linear-gradient(135deg, #f0f8ff 0%, #a8d8ea 100%);
+  text-align:center; padding:80px 0 60px;
+  background:linear-gradient(135deg,#f0f8ff 0%,#c8ecff 100%);
 }
-
 .price-page .page-title {
-    font-family: 'RocknRoll One', 'Arial', sans-serif;
-    font-size: 3rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 1rem;
+  font-family:var(--font-accent,'RocknRoll One',sans-serif);
+  font-size:2.6rem; font-weight:bold; color:#333; margin-bottom:1rem;
 }
+.price-page .page-subtitle { font-size:1.1rem; color:#666; opacity:.8; }
 
-.price-page .page-subtitle {
-    font-size: 1.2rem;
-    color: #666;
-    opacity: 0.8;
-}
-
-.price-page .price-section {
-    padding: 4rem 0;
-    background: #f8f9fa;
-}
-
+.price-page .price-section { padding:4rem 0; background:var(--c-bg,#fffdf9); }
 .price-page .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
+  max-width:1200px; margin:0 auto; padding:0 2rem;
+  display:flex; flex-direction:column; gap:3rem;
 }
 
-.price-page .price-intro {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-    width: 100%;
-}
+.price-page .price-intro { text-align:center; max-width:800px; margin:0 auto; width:100%; }
+.price-page .price-intro p { font-size:1.05rem; line-height:1.85; color:#666; margin-bottom:.8rem; }
+.price-page .note { font-size:.88rem!important; color:#999!important; font-style:italic; }
 
-.price-page .price-intro p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #666;
-    margin-bottom: 1rem;
-}
-
-.price-page .note {
-    font-size: 0.9rem !important;
-    color: #999 !important;
-    font-style: italic;
-}
-
+/* ===== Price Table ===== */
 .price-page .price-table-container {
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    min-height: 400px;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  background:white;
+  border-radius:var(--radius-lg,28px);
+  overflow:hidden;
+  box-shadow:var(--shadow-card,0 8px 32px rgba(0,0,0,.07));
+  transition:transform .35s var(--transition-bounce,ease), box-shadow .3s ease;
+  min-height:400px; display:flex; flex-direction:column; width:100%;
 }
-
 .price-page .price-table-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  transform:translateY(-5px);
+  box-shadow:var(--shadow-hover,0 12px 40px rgba(168,230,207,.22));
 }
 
 .price-page .table-title {
-    font-family: 'RocknRoll One', 'Arial', sans-serif;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: white;
-    background: linear-gradient(135deg, #a8d8ea 0%, #88c0ea 100%);
-    padding: 1.5rem;
-    margin: 0;
-    text-align: center;
+  font-family:var(--font-heading,'Quicksand',sans-serif);
+  font-size:1.35rem; font-weight:700; color:white;
+  background:linear-gradient(135deg,#a8d8ea 0%,#88c0ea 100%);
+  padding:1.3rem; margin:0; text-align:center;
 }
 
-.price-page .price-table {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1.5fr;
-    width: 100%;
-    flex-grow: 1;
-}
-
-.price-page .table-header {
-    display: contents;
-}
-
+.price-page .price-table { display:grid; grid-template-columns:2fr 1fr 1.5fr; width:100%; flex-grow:1; }
+.price-page .table-header { display:contents; }
 .price-page .header-item {
-    background: linear-gradient(135deg, #e8f4f8 0%, #d4edda 100%);
-    padding: 1rem;
-    font-weight: bold;
-    color: #333;
-    border-bottom: 2px solid #a8d8ea;
-    text-align: center;
+  background:linear-gradient(135deg,#e8f4f8,#d4edda);
+  padding:1rem; font-weight:bold; color:#333;
+  border-bottom:2px solid #a8d8ea; text-align:center;
 }
-
-.price-page .table-row {
-    display: contents;
-}
-
-.price-page .table-row:nth-child(even) .table-cell {
-    background: #f8f9fa;
-}
-
+.price-page .table-row { display:contents; }
+.price-page .table-row:nth-child(even) .table-cell { background:#f8fbfc; }
 .price-page .table-cell {
-    padding: 1rem;
-    border-bottom: 1px solid #e9ecef;
-    display: flex;
-    align-items: center;
-    font-size: 0.95rem;
-    line-height: 1.4;
+  padding:1rem; border-bottom:1px solid #eef2f5;
+  display:flex; align-items:center; font-size:.95rem; line-height:1.5;
 }
-
-.price-page .table-cell:first-child {
-    font-weight: 500;
-    color: #333;
-}
-
-.price-page .table-cell:nth-child(2) {
-    justify-content: center;
-    font-weight: bold;
-}
-
-.price-page .table-cell:last-child {
-    color: #666;
-    font-size: 0.9rem;
-}
-
-.price-page .table-cell.price {
-    color: #a8d8ea !important;
-    font-size: 1.1rem !important;
-    font-weight: bold !important;
-}
-
+.price-page .table-cell:first-child { font-weight:500; color:#333; }
+.price-page .table-cell:nth-child(2) { justify-content:center; font-weight:bold; }
+.price-page .table-cell:last-child { color:#666; font-size:.9rem; }
+.price-page .table-cell.price,
 .price-page .price {
-    color: #a8d8ea !important;
-    font-size: 1.1rem !important;
-    font-weight: bold !important;
+  color:#5cb8d6!important; font-size:1.1rem!important; font-weight:bold!important;
 }
 
-/* Options Section */
+/* ===== Options ===== */
 .price-page .options-section {
-    background: white;
-    border-radius: 15px;
-    padding: 2rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    width: 100%;
+  background:white; border-radius:var(--radius-lg,28px);
+  padding:2.5rem;
+  box-shadow:var(--shadow-card,0 8px 32px rgba(0,0,0,.07));
+  width:100%;
 }
-
 .price-page .options-section .section-title {
-    font-family: 'RocknRoll One', 'Arial', sans-serif;
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 2rem;
-    text-align: center;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid #a8d8ea;
+  font-family:var(--font-heading,'Quicksand',sans-serif);
+  font-size:1.4rem; color:#333; margin-bottom:2rem;
+  text-align:center; padding-bottom:.5rem;
+  border-bottom:2px solid var(--c-mint,#a8e6cf);
 }
-
-.price-page .options-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-}
+.price-page .options-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; }
 
 .price-page .option-item {
-    background: #f8f9fa;
-    border-radius: 10px;
-    padding: 1.5rem;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background:#f8fbfc; border-radius:var(--radius-md,20px);
+  padding:1.5rem; text-align:center;
+  transition:transform .35s var(--transition-bounce,ease), box-shadow .3s ease;
 }
+.price-page .option-item:hover { transform:translateY(-4px); box-shadow:var(--shadow-soft,0 4px 24px rgba(168,230,207,.13)); }
+.price-page .option-icon { font-size:2rem; margin-bottom:.8rem; }
+.price-page .option-title { font-size:1.05rem; font-weight:bold; color:#333; margin-bottom:.4rem; }
+.price-page .option-price { font-size:1.15rem; font-weight:bold; color:#5cb8d6; margin-bottom:.4rem; }
+.price-page .option-description { font-size:.88rem; color:#666; line-height:1.5; }
 
-.price-page .option-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
-.price-page .option-icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.price-page .option-title {
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 0.5rem;
-}
-
-.price-page .option-price {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #a8d8ea;
-    margin-bottom: 0.5rem;
-}
-
-.price-page .option-description {
-    font-size: 0.9rem;
-    color: #666;
-    line-height: 1.4;
-}
-
-/* Payment Section */
+/* ===== Payment ===== */
 .price-page .payment-section {
-    background: white;
-    border-radius: 15px;
-    padding: 2rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    width: 100%;
+  background:white; border-radius:var(--radius-lg,28px);
+  padding:2.5rem;
+  box-shadow:var(--shadow-card,0 8px 32px rgba(0,0,0,.07));
+  width:100%;
 }
-
 .price-page .payment-section .section-title {
-    font-family: 'RocknRoll One', 'Arial', sans-serif;
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 2rem;
-    text-align: center;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid #a8d8ea;
+  font-family:var(--font-heading,'Quicksand',sans-serif);
+  font-size:1.4rem; color:#333; margin-bottom:2rem;
+  text-align:center; padding-bottom:.5rem;
+  border-bottom:2px solid var(--c-mint,#a8e6cf);
 }
-
-.price-page .flow-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-}
-
-.price-page .flow-step {
-    text-align: center;
-    position: relative;
-}
-
+.price-page .flow-container { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:2rem; }
+.price-page .flow-step { text-align:center; position:relative; }
 .price-page .step-number {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #a8d8ea 0%, #88c0ea 100%);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin: 0 auto 1rem;
+  width:48px; height:48px; border-radius:50%;
+  background:linear-gradient(135deg,#a8d8ea,#88c0ea);
+  color:white; display:flex; align-items:center; justify-content:center;
+  font-size:1.15rem; font-weight:bold; margin:0 auto .8rem;
 }
+.price-page .step-content h3 { font-size:1rem; font-weight:bold; color:#333; margin-bottom:.4rem; }
+.price-page .step-content p { font-size:.88rem; color:#666; line-height:1.5; }
 
-.price-page .step-content h3 {
-    font-size: 1rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 0.5rem;
-}
-
-.price-page .step-content p {
-    font-size: 0.9rem;
-    color: #666;
-    line-height: 1.4;
-}
-
-/* CTA Section */
+/* ===== CTA ===== */
 .price-page .price-cta {
-    background: white;
-    border-radius: 15px;
-    padding: 2rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 100%;
+  background:white; border-radius:var(--radius-lg,28px);
+  padding:2.5rem;
+  box-shadow:var(--shadow-card,0 8px 32px rgba(0,0,0,.07));
+  text-align:center; width:100%;
 }
-
 .price-page .cta-title {
-    font-family: 'RocknRoll One', 'Arial', sans-serif;
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 1rem;
+  font-family:var(--font-heading,'Quicksand',sans-serif);
+  font-size:1.4rem; color:#333; margin-bottom:.8rem; font-weight:700;
 }
-
-.price-page .cta-description {
-    font-size: 1.1rem;
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-}
-
-.price-page .cta-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-}
+.price-page .cta-description { font-size:1rem; color:#666; line-height:1.7; margin-bottom:1.8rem; }
+.price-page .cta-buttons { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
 
 .price-page .btn {
-    display: inline-block;
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
+  display:inline-block; padding:.9rem 2rem;
+  border-radius:var(--radius-pill,999px);
+  text-decoration:none; font-weight:bold;
+  transition:transform .35s var(--transition-bounce,ease), box-shadow .3s ease;
+  border:none; cursor:pointer;
 }
-
 .price-page .btn-primary {
-    background: linear-gradient(135deg, #a8d8ea 0%, #88c0ea 100%);
-    color: white;
-    box-shadow: 0 5px 15px rgba(168, 216, 234, 0.3);
+  background:linear-gradient(135deg,#a8d8ea,#88c0ea); color:white;
+  box-shadow:0 5px 15px rgba(168,216,234,.3);
 }
-
-.price-page .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(168, 216, 234, 0.4);
-}
-
+.price-page .btn-primary:hover { transform:translateY(-3px); box-shadow:0 10px 30px rgba(168,216,234,.4); }
 .price-page .btn-secondary {
-    background: transparent;
-    color: #a8d8ea;
-    border: 2px solid #a8d8ea;
+  background:transparent; color:#5cb8d6; border:2px solid #a8d8ea;
 }
+.price-page .btn-secondary:hover { background:#a8d8ea; color:white; transform:translateY(-3px); }
 
-.price-page .btn-secondary:hover {
-    background: #a8d8ea;
-    color: white;
-    transform: translateY(-3px);
+/* ===== Responsive ===== */
+@media (max-width:768px) {
+  .price-page .page-title { font-size:2rem; }
+  .price-page .price-table { grid-template-columns:1fr; gap:0; }
+  .price-page .header-item { display:none; }
+  .price-page .table-row {
+    display:grid; grid-template-columns:1fr; gap:0;
+    margin-bottom:1rem; border:1px solid #e9ecef;
+    border-radius:var(--radius-md,20px); overflow:hidden;
+  }
+  .price-page .table-cell { border-bottom:none; justify-content:flex-start; padding-left:2rem; }
+  .price-page .table-cell:first-child {
+    background:linear-gradient(135deg,#e8f4f8,#d4edda); font-weight:bold; padding-left:1rem;
+  }
+  .price-page .table-cell:nth-child(2)::before { content:'料金: '; font-weight:normal; color:#666; position:absolute; left:1rem; }
+  .price-page .table-cell:nth-child(3)::before { content:'備考: '; font-weight:normal; color:#666; position:absolute; left:1rem; }
+  .price-page .table-cell:nth-child(2) { justify-content:flex-start; padding-left:4rem; position:relative; }
+  .price-page .table-cell:nth-child(3) { padding-left:4rem; position:relative; }
+  .price-page .options-grid { grid-template-columns:1fr; }
+  .price-page .flow-container { grid-template-columns:1fr; gap:1.5rem; }
+  .price-page .cta-buttons { flex-direction:column; align-items:center; }
 }
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .price-page .page-title {
-        font-size: 2rem;
-    }
-    
-    .price-page .price-table {
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-    
-    .price-page .header-item {
-        display: none;
-    }
-    
-    .price-page .table-row {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 0;
-        margin-bottom: 1rem;
-        border: 1px solid #e9ecef;
-        border-radius: 8px;
-        overflow: hidden;
-    }
-    
-    .price-page .table-cell {
-        border-bottom: none;
-        border-right: none;
-        justify-content: flex-start;
-        position: relative;
-        padding-left: 2rem;
-    }
-    
-    .price-page .table-cell:first-child {
-        background: linear-gradient(135deg, #e8f4f8 0%, #d4edda 100%);
-        font-weight: bold;
-        padding-left: 1rem;
-    }
-    
-    .price-page .table-cell:nth-child(2)::before {
-        content: '料金: ';
-        font-weight: normal;
-        color: #666;
-        position: absolute;
-        left: 1rem;
-    }
-    
-    .price-page .table-cell:nth-child(3)::before {
-        content: '備考: ';
-        font-weight: normal;
-        color: #666;
-        position: absolute;
-        left: 1rem;
-    }
-    
-    .price-page .table-cell:nth-child(2) {
-        justify-content: flex-start;
-        padding-left: 4rem;
-    }
-    
-    .price-page .table-cell:nth-child(3) {
-        padding-left: 4rem;
-    }
-    
-    .price-page .options-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .price-page .flow-container {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .price-page .cta-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .price-page .page-header {
-        padding: 2rem 1rem 1rem;
-    }
-    
-    .price-page .price-section {
-        padding: 2rem 0;
-    }
-    
-    .price-page .container {
-        gap: 1.5rem;
-        padding: 0 1rem;
-    }
-    
-    .price-page .price-table-container {
-        min-height: auto;
-    }
-    
-    .price-page .table-title {
-        font-size: 1.2rem;
-        padding: 1rem;
-    }
-    
-    .price-page .options-section,
-    .price-page .payment-section,
-    .price-page .price-cta {
-        padding: 1.5rem;
-    }
+@media (max-width:480px) {
+  .price-page .page-header { padding:2rem 1rem 1rem; }
+  .price-page .price-section { padding:2rem 0; }
+  .price-page .container { gap:1.5rem; padding:0 1rem; }
+  .price-page .price-table-container { min-height:auto; }
+  .price-page .table-title { font-size:1.15rem; padding:1rem; }
+  .price-page .options-section,
+  .price-page .payment-section,
+  .price-page .price-cta { padding:1.5rem; }
 }
