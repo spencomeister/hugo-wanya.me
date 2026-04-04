@@ -73,23 +73,6 @@
                   </div>
                   {{ end }}
                 </div>
-
-                {{/* Work info panel */}}
-                <div class="work-info">
-                  <div class="work-details">
-                    {{ range $wi, $work := $filtered }}
-                    <div class="slide-info" data-slide="{{ $wi }}" {{ if eq $wi 0 }}style="display: block;"{{ else }}style="display: none;"{{ end }}>
-                      <h4 class="work-name">{{ $work.title }}</h4>
-                      {{ with $work.description }}<p class="work-description">{{ . }}</p>{{ end }}
-                      {{ with $work.tags }}
-                      <div class="work-tags">
-                        {{ range . }}<span class="tag">{{ . }}</span>{{ end }}
-                      </div>
-                      {{ end }}
-                    </div>
-                    {{ end }}
-                  </div>
-                </div>
               </div>
             </div>
           </div>

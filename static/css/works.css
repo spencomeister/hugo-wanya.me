@@ -47,14 +47,12 @@
   box-shadow:var(--shadow-hover,0 12px 40px rgba(168,230,207,.22));
 }
 
-/* 2-column layout: carousel | info */
 .carousel-container {
-  display:grid; grid-template-columns:1fr 1fr;
-  gap:0; min-height:400px;
+  min-height:400px;
 }
 
 /* ===== Outer carousel (works) ===== */
-.outer-carousel { position:relative; overflow:hidden; background:#f9f9f9; border-radius:var(--radius-lg,28px) 0 0 var(--radius-lg,28px); }
+.outer-carousel { position:relative; overflow:hidden; background:#f9f9f9; border-radius:var(--radius-lg,28px); }
 .outer-carousel .carousel-track { display:flex; transition:transform .5s ease; height:100%; }
 .outer-carousel .carousel-slide { min-width:100%; height:100%; display:flex; align-items:center; justify-content:center; }
 
@@ -111,61 +109,7 @@
 }
 .inner-dot.active { background:white; transform:scale(1.3); }
 
-/* ===== Info panel ===== */
-.work-info { padding:2.5rem; display:flex; flex-direction:column; justify-content:center; }
-.work-details { position:relative; overflow:hidden; min-height:180px; }
 
-.slide-info {
-  position:absolute; top:0; left:0; right:0;
-  opacity:0; transform:translateY(20px);
-  transition:all .5s ease; pointer-events:none; z-index:1;
-}
-.slide-info.active { opacity:1; transform:translateY(0); pointer-events:auto; z-index:2; }
-.slide-info.entering { animation:slideInfoEnter .6s ease forwards; z-index:3; }
-.slide-info.exiting  { animation:slideInfoExit .3s ease forwards; }
-
-@keyframes slideInfoEnter {
-  0% { opacity:0; transform:translateY(28px) scale(.96); }
-  50% { opacity:.7; transform:translateY(8px) scale(.98); }
-  100% { opacity:1; transform:translateY(0) scale(1); }
-}
-@keyframes slideInfoExit {
-  0% { opacity:1; transform:translateY(0) scale(1); }
-  100% { opacity:0; transform:translateY(-18px) scale(.96); }
-}
-
-.work-name {
-  font-family:var(--font-heading,'Quicksand',sans-serif);
-  font-size:1.4rem; font-weight:700; color:#333; margin-bottom:.8rem;
-}
-.slide-info.entering .work-name { animation:elementSlideIn .5s ease .1s both; }
-
-.work-description {
-  font-size:.95rem; line-height:1.8; color:var(--c-text-light,#777);
-  margin-bottom:1.2rem;
-}
-.slide-info.entering .work-description { animation:elementSlideIn .5s ease .2s both; }
-
-.work-tags { display:flex; flex-wrap:wrap; gap:.5rem; }
-.slide-info.entering .work-tags { animation:elementSlideIn .5s ease .3s both; }
-
-.tag {
-  background:linear-gradient(135deg,var(--c-mint,#a8e6cf),var(--c-mint-dark,#88d8c0));
-  color:white; padding:.35rem .9rem;
-  border-radius:var(--radius-pill,999px);
-  font-size:.78rem; font-weight:600;
-  transition:transform .25s var(--transition-bounce,ease);
-}
-.tag:hover { transform:translateY(-2px) scale(1.05); }
-
-.slide-info.entering .tag { animation:tagPop .4s ease both; }
-.slide-info.entering .tag:nth-child(1) { animation-delay:.35s; }
-.slide-info.entering .tag:nth-child(2) { animation-delay:.4s; }
-.slide-info.entering .tag:nth-child(3) { animation-delay:.45s; }
-.slide-info.entering .tag:nth-child(4) { animation-delay:.5s; }
-
-@keyframes elementSlideIn { 0%{opacity:0;transform:translateX(-18px)} 100%{opacity:1;transform:translateX(0)} }
-@keyframes tagPop { 0%{opacity:0;transform:scale(.8) translateY(8px)} 70%{transform:scale(1.06) translateY(-2px)} 100%{opacity:1;transform:scale(1) translateY(0)} }
 
 /* No-image placeholder */
 .no-image { display:flex; align-items:center; justify-content:center; height:200px; background:#f5f5f5; color:#bbb; font-size:.95rem; }
@@ -180,11 +124,8 @@
 @media (max-width:768px) {
   .page-title { font-size:2.2rem; }
   .work-title { font-size:1.4rem; }
-  .carousel-container { grid-template-columns:1fr; min-height:auto; }
-  .outer-carousel { min-height:280px; border-radius:var(--radius-lg,28px) var(--radius-lg,28px) 0 0; }
-  .work-info { padding:1.8rem; }
-  .work-details { min-height:160px; }
-  .work-name { font-size:1.2rem; }
+  .carousel-container { min-height:auto; }
+  .outer-carousel { min-height:280px; }
   .carousel-btn { width:38px; height:38px; font-size:1.1rem; }
   .carousel-btn.prev { left:10px; }
   .carousel-btn.next { right:10px; }
@@ -196,5 +137,4 @@
   .works-gallery .container { gap:2.5rem; padding:0 1rem; }
   .work-section { gap:1rem; margin-bottom:1rem; }
   .work-title { font-size:1.2rem; }
-  .work-details { min-height:140px; }
 }
