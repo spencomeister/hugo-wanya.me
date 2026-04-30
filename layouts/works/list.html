@@ -16,8 +16,8 @@
 
   <section class="works-gallery">
     <div class="container">
-      {{ $items := hugo.Data.works.items.contents }}
-      {{ $categories := hugo.Data.works.categories.categories }}
+      {{ $items := site.Data.works.items.contents }}
+      {{ $categories := site.Data.works.categories.categories }}
       {{ $hasContent := false }}
 
       {{ range $cat := $categories }}

@@ -32,7 +32,7 @@
         <h2 class="section-title">ご依頼の流れ</h2>
         <div class="flow-steps">
           {{ range $index, $step := (slice
-            (dict "title" "お問い合わせ" "description" "CONTACT や X DM からご希望の内容・予算・納期をお知らせください。")
+            (dict "title" "お問い合わせ" "description" "CONTACT や X DM からご希望の内容・ご予算をお知らせください。不明な点はお気軽にご相談ください。")
             (dict "title" "お見積り・打ち合わせ" "description" "詳細を伺い、お見積りをご提示します。合意後に正式受注です。")
             (dict "title" "ラフ制作" "description" "構図やポーズのラフを制作し、ご確認いただきます。")
             (dict "title" "線画・着色" "description" "ラフ確定後に線画・着色を進め、進捗を共有します。")
@@ -140,28 +140,12 @@
 
       <div id="delivery" class="guideline-section">
         <h2 class="section-title">納期について</h2>
-        <div class="delivery-content">
-          <div class="delivery-times">
-            {{ range (slice
-              (dict "type" "Skebイラスト" "time" "1-3日")
-              (dict "type" "デフォルメイラスト" "time" "3-7日")
-              (dict "type" "等身大イラスト" "time" "1-2週間")
-              (dict "type" "配信用スタンプ" "time" "3-5日")
-            ) }}
-            <div class="delivery-item">
-              <div class="delivery-type">{{ .type }}</div>
-              <div class="delivery-time">{{ .time }}</div>
-            </div>
-            {{ end }}
-          </div>
-          <div class="delivery-notes">
-            <h3>納期に関する注意事項</h3>
-            <ul>
-              <li>繁忙期は納期が延長する場合があります</li>
-              <li>お急ぎの場合は特急料金（+50%）で対応可能</li>
-              <li>進捗は随時ご報告いたします</li>
-            </ul>
-          </div>
+        <div class="note-important" style="max-width:680px; margin:0 auto;">
+          <p style="color:#555; line-height:1.8; margin:0 0 1.2rem;">納期はご依頼の内容・ご状況によって異なります。<br>お問い合わせ時にお気軽にご相談ください。</p>
+          <ul class="note-list">
+            <li>繁忙期は通常よりお時間をいただく場合があります</li>
+            <li>進捗は随時ご報告いたします</li>
+          </ul>
         </div>
       </div>
 
@@ -222,7 +206,11 @@
             <ul class="note-list">
               <li>ガイドラインは予告なく変更する場合があります</li>
               <li>判断に迷う内容は事前にご相談ください</li>
-              <li>制作開始後のキャンセルは不可</li>
+              <li>お支払い後にご依頼者様のご都合によるキャンセルの場合、キャンセル料としてご依頼料金の全額を頂戴いたします</li>
+              <li>制作させていただいた作品はポートフォリオ・サンプルとして掲載する場合があります</li>
+              <li>作品の二次配布・自作発言は禁止です</li>
+              <li>納品後のデータはご自身で保管・バックアップをお願いいたします</li>
+              <li>領収書の発行は基本省略しております。ご入用の方はお申し付けください</li>
               <li>天災等による遅延は免責とさせていただきます</li>
             </ul>
           </div>
@@ -232,8 +220,4 @@
             <a href="/contact/" class="contact-button">お問い合わせ</a>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-</main>
-{{ end }}
+      </d
